@@ -23,16 +23,28 @@ The application predicts whether a credit card transaction is **Legitimate** or 
 
 # 📊 Dataset
 
-This project is based on the popular **Credit Card Fraud Detection Dataset**.
+This project uses the **Credit Card Fraud Detection Dataset**, a publicly available dataset for fraud detection research.
 
-The dataset contains:
+**Dataset Source:** Kaggle
 
-* Time
-* Transaction Amount
-* 28 anonymized PCA features (V1–V28)
-* Target variable (`Class`)
+**Dataset Link:**
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
-> **Note:** The dataset is **not included** in this repository because it exceeds GitHub's file size limits. Download it separately if you want to retrain the models.
+### Dataset Summary
+
+- **Rows:** 284,807 transactions
+- **Columns:** 31
+- **Target Variable:** `Class`
+  - `0` → Legitimate Transaction
+  - `1` → Fraudulent Transaction
+
+### Features
+
+- **Time** – Seconds elapsed between each transaction and the first transaction.
+- **Amount** – Transaction amount.
+- **V1–V28** – Anonymized numerical features obtained using Principal Component Analysis (PCA) to preserve customer privacy.
+
+> **Note:** The dataset is not included in this repository due to GitHub's file size limitations. Download it from the link above if you wish to retrain the models.
 
 ---
 
