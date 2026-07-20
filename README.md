@@ -189,9 +189,7 @@ The deployed application performs inference using the saved production model wit
 
 **Streamlit App**
 
-> Add your deployed Streamlit URL here.
-
-https://end-to-end-fraud-detection-system-gc.streamlit.app/
+> https://end-to-end-fraud-detection-system-gc.streamlit.app/
 ---
 
 # 📸 Application Preview
