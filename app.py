@@ -6,22 +6,158 @@ from src.pipeline.prediction_pipeline import PredictionPipeline
 from src.utils import load_object
 
 
-st.set_page_config(page_title="Fraud Detection App", page_icon="💳", layout="wide")
-st.title("💳 Credit Card Fraud Detection System")
-
-with st.expander("ℹ️ About the Input Features"):
-    st.write("""
-The dataset has been anonymized using Principal Component Analysis (PCA).
-
-- V1–V28 are transformed numerical features.
-- Their original meanings are not publicly available.
-- Time represents elapsed transaction time.
-- Amount represents the transaction amount.
-""")
-
+st.set_page_config(
+    page_title="Fraud Detection AI",
+    page_icon="💳",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 st.markdown("""
-Predict whether a credit card transaction is **Legitimate** or **Fraudulent**
-using a trained Machine Learning model.
+<style>
+
+/* Remove top padding */
+.block-container{
+    padding-top:2rem;
+}
+
+/* Background */
+.stApp{
+    background:linear-gradient(135deg,#0f172a,#111827,#1e293b);
+}
+
+/* Main title */
+.main-title{
+    font-size:48px;
+    font-weight:800;
+    color:white;
+    margin-bottom:0px;
+}
+
+.sub-title{
+    color:#cbd5e1;
+    font-size:20px;
+}
+
+/* Glass Cards */
+
+.glass{
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter: blur(16px);
+padding:28px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+margin-bottom:20px;
+}
+
+/* Prediction Cards */
+
+.success-card{
+
+background:#052e16;
+border-left:8px solid #22c55e;
+padding:25px;
+border-radius:15px;
+font-size:24px;
+font-weight:700;
+color:white;
+
+}
+
+.error-card{
+
+background:#450a0a;
+border-left:8px solid #ef4444;
+padding:25px;
+border-radius:15px;
+font-size:24px;
+font-weight:700;
+color:white;
+
+}
+
+.metric-card{
+
+background:#1e293b;
+padding:18px;
+border-radius:15px;
+text-align:center;
+border:1px solid #334155;
+
+}
+
+/* Sidebar */
+
+section[data-testid="stSidebar"]{
+background:#111827;
+}
+
+/* Button */
+
+.stButton>button{
+
+background:#2563eb;
+color:white;
+font-size:20px;
+font-weight:bold;
+border-radius:12px;
+height:60px;
+width:100%;
+border:none;
+transition:0.3s;
+
+}
+
+.stButton>button:hover{
+
+background:#1d4ed8;
+transform:scale(1.02);
+
+}
+
+</style>
+""",unsafe_allow_html=True)
+st.markdown("""
+
+<div class="glass">
+
+<div class="main-title">
+
+💳 Credit Card Fraud Detection AI
+
+</div>
+
+<div class="sub-title">
+
+Real-Time Machine Learning Powered Transaction Risk Analysis
+
+</div>
+
+<br>
+
+Detect suspicious credit card transactions instantly using a trained Machine Learning model.
+The PCA features (V1-V28) are anonymized representations of the original transaction data.
+
+</div>
+
+""",unsafe_allow_html=True)
+
+with st.expander("📘 Understanding the Input Features"):
+
+    st.write("""
+
+### Feature Information
+
+- **V1 – V28** are anonymized numerical features generated using PCA.
+
+- Their original meaning is intentionally hidden to protect user privacy.
+
+- **Time** represents the elapsed seconds from the first transaction.
+
+- **Amount** is the monetary value of the transaction.
+
+These features are passed to a trained Machine Learning model which predicts whether the transaction is **Legitimate** or **Fraudulent**.
+
 """)
 
 @st.cache_resource
@@ -65,7 +201,7 @@ for feature_name in feature_names:
 
 input_df = pd.DataFrame([input_values])
 
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([1.7, 1.3])
 
 with col1:
     st.subheader("📋 Transaction Summary")
