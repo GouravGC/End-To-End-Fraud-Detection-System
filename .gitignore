@@ -1,0 +1,15 @@
+# Dataset
+artifacts/Dataset/
+*.csv
+
+# Virtual environment
+venv/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
