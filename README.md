@@ -1,97 +1,223 @@
-# Fraud Detection Project
+# 💳 End-to-End Credit Card Fraud Detection System
 
-## Overview
-This project detects fraudulent credit card transactions using a modular machine learning workflow built from an existing, fully working Jupyter Notebook. The notebook remains the single source of truth, and the production code extracts reusable logic into a structured Python project.
+A production-ready **Machine Learning** application for detecting fraudulent credit card transactions. The project follows a modular architecture, provides a user-friendly **Streamlit** interface for real-time predictions, and is designed for deployment and scalability.
 
-The repository includes a Streamlit application for interactive inference and a modular pipeline for training and prediction. Existing artifacts are reused as-is.
+---
 
-## Dataset
-The project uses the well-known credit card fraud dataset stored in the existing artifacts folder:
+# 🚀 Project Overview
 
-- `artifacts/Dataset/creditcard.csv`
+This project transforms a complete Machine Learning workflow into a clean, production-ready Python application.
 
-The dataset contains anonymized transaction features, transaction time, transaction amount, and the target label `Class`.
+It includes:
 
-## Problem Statement
-The goal is to classify transactions as legitimate or fraudulent while handling severe class imbalance and preserving the exact behavior of the original notebook pipeline.
+* Modular project architecture
+* Machine Learning training and prediction pipelines
+* Interactive Streamlit web application
+* Pre-trained model inference
+* Structured logging and exception handling
+* Deployment-ready codebase
 
-## Features
-- Modular data ingestion, validation, preprocessing, training, and evaluation
-- Existing artifact loading for deployment-safe inference
-- Multiple model training branches preserved from the notebook
-- Precision-recall based comparison support
-- Streamlit UI for interactive fraud prediction
-- Structured logging and exception handling
+The application predicts whether a credit card transaction is **Legitimate** or **Fraudulent** using a trained machine learning model.
 
-## Project Structure
-- `app.py` - Streamlit application
-- `main.py` - Streamlit launcher
-- `setup.py` - Package metadata
-- `requirements.txt` - Python dependencies
-- `.gitignore` - Ignore rules
-- `src/` - Modular source code
-- `artifacts/` - Existing dataset, models, scaler, feature names, plots, and reports
-- `notebooks/` - Original notebook source
+---
 
-## Installation
-1. Create and activate a Python environment.
-2. Install dependencies:
-   - `pip install -r requirements.txt`
-3. Ensure the existing `artifacts/` directory remains in place.
+# 📊 Dataset
 
-## Training
-The training workflow is implemented in the modular pipeline and mirrors the notebook behavior.
+This project is based on the popular **Credit Card Fraud Detection Dataset**.
 
-- Training entry point: `src/pipeline/train_pipeline.py`
-- The pipeline loads the existing dataset, performs the same cleaning, preprocessing, model training, and evaluation logic from the notebook.
+The dataset contains:
 
-## Prediction
-Prediction uses only existing artifacts and never fits any transformer or model.
+* Time
+* Transaction Amount
+* 28 anonymized PCA features (V1–V28)
+* Target variable (`Class`)
 
-- Prediction entry point: `src/pipeline/prediction_pipeline.py`
-- Required artifacts:
-  - `artifacts/xgboost.pkl`
-  - `artifacts/scaler.pkl`
-  - `artifacts/feature_names.pkl`
+> **Note:** The dataset is **not included** in this repository because it exceeds GitHub's file size limits. Download it separately if you want to retrain the models.
 
-## Streamlit
-Run the application with:
+---
 
-- `streamlit run app.py`
+# 🎯 Problem Statement
 
-The UI provides:
-- Sidebar input widgets
-- Input summary
-- Prediction result
-- Fraud probability when available
+Credit card fraud is a highly imbalanced classification problem where fraudulent transactions represent only a very small percentage of all transactions.
 
-## Artifacts
-The project reuses these existing artifacts without regeneration:
+The objective of this project is to accurately identify fraudulent transactions while minimizing false positives and preserving high recall.
 
-- `artifacts/Dataset/creditcard.csv`
-- `artifacts/scaler.pkl`
-- `artifacts/feature_names.pkl`
-- `artifacts/baseline_lr.pkl`
-- `artifacts/smote_lr.pkl`
-- `artifacts/adasyn_lr.pkl`
-- `artifacts/weighted_lr.pkl`
-- `artifacts/weighted_rf.pkl`
-- `artifacts/balanced_rf.pkl`
-- `artifacts/xgboost.pkl`
-- `artifacts/model_comparison.csv`
-- `artifacts/pr_curve.png`
+---
 
-## Technologies Used
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- imbalanced-learn
-- XGBoost
-- Joblib
-- Streamlit
+# ✨ Key Features
 
-## Results
-The notebook already contains the completed training and evaluation workflow, along with saved models, comparison metrics, and visual artifacts. The modular project is designed to reuse those outputs directly and keep deployment behavior aligned with the notebook.
+* ✅ End-to-End Machine Learning Pipeline
+* ✅ Production-Ready Modular Architecture
+* ✅ Streamlit Web Application
+* ✅ Real-Time Fraud Prediction
+* ✅ Reusable Model Artifacts
+* ✅ Structured Logging
+* ✅ Exception Handling
+* ✅ GitHub Ready
+* ✅ Deployment Ready
+* ✅ Docker Ready (Upcoming)
+
+---
+
+# 🏗️ Project Structure
+
+```text
+End-To-End-Fraud-Detection-System/
+│
+├── artifacts/
+│   ├── models/
+│   ├── feature_names.pkl
+│   ├── scaler.pkl
+│   └── other trained model artifacts
+│
+├── notebooks/
+│
+├── src/
+│   ├── components/
+│   ├── constants/
+│   ├── pipeline/
+│   ├── logger.py
+│   ├── exception.py
+│   └── utils.py
+│
+├── app.py
+├── main.py
+├── requirements.txt
+├── setup.py
+├── README.md
+└── .gitignore
+```
+
+---
+
+# ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/GouravGC/End-To-End-Fraud-Detection-System.git
+```
+
+Move into the project directory:
+
+```bash
+cd End-To-End-Fraud-Detection-System
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate the environment.
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# ▶️ Running the Application
+
+Start the Streamlit application:
+
+```bash
+streamlit run app.py
+```
+
+The application provides:
+
+* Transaction feature input
+* Real-time prediction
+* Fraud probability
+* Transaction summary
+
+---
+
+# 🤖 Machine Learning Models
+
+The project includes multiple trained models for experimentation and comparison, including:
+
+* Logistic Regression
+* SMOTE Logistic Regression
+* ADASYN Logistic Regression
+* Weighted Logistic Regression
+* Random Forest
+* Weighted Random Forest
+* Balanced Random Forest
+* XGBoost
+
+The deployed application uses the best-performing saved model for inference.
+
+---
+
+# 🛠️ Technologies Used
+
+* Python
+* Scikit-learn
+* XGBoost
+* Streamlit
+* Pandas
+* NumPy
+* Joblib
+* Matplotlib
+* Seaborn
+* Imbalanced-learn
+
+---
+
+# 📈 Results
+
+The project evaluates multiple machine learning models using techniques designed for highly imbalanced datasets.
+
+Evaluation includes:
+
+* Precision
+* Recall
+* F1-Score
+* Precision-Recall Curve
+* Model Comparison
+
+The deployed application performs inference using the saved production model without retraining.
+
+---
+
+# 🌐 Live Demo
+
+**Streamlit App**
+
+> Add your deployed Streamlit URL here.
+
+---
+
+# 📸 Application Preview
+
+Add screenshots of:
+
+* Home Page
+* Prediction Result
+* Fraud Detection Example
+
+---
+
+# 🔮 Future Improvements
+
+* Docker Containerization
+* CI/CD Pipeline
+* Cloud Deployment
+* MLflow Integration
+* Model Monitoring
+* Kubernetes Deployment
+
+---
+
+# 👨‍💻 Author
+
+**Gourav Chhatwani**
+
+GitHub: https://github.com/GouravGC
+
+---
