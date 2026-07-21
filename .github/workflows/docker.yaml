@@ -25,7 +25,9 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t ghcr.io/gouravgc/fraud-detection:latest .
+          docker build \
+            --label org.opencontainers.image.source=https://github.com/GouravGC/End-To-End-Fraud-Detection-System \
+            -t ghcr.io/gouravgc/fraud-detection:latest .
 
       - name: Push Docker Image
         run: |
